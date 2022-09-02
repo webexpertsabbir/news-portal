@@ -11,6 +11,7 @@ const dispalyCatagori = catagoris =>{
     catagoris.forEach(catagori => {
         // console.log(catagori);
         const li = document.createElement('li');
+        li.classList.add('cursor-pointer');
         li.innerHTML = `<a onclick="loadNews(${catagori.category_id})">${catagori.category_name}</a>`;
         catagorilist.appendChild(li);
 
@@ -31,6 +32,7 @@ const loadNews = async(category_id) =>{
 const displayNews = blogPost =>{
     // console.log(blogPost);
     const displayNews = document.getElementById('dispaly-news');
+    displayNews.textContent = '';
     blogPost.forEach(news =>{
         console.log(news);
         const article = document.createElement('article');
@@ -44,20 +46,20 @@ const displayNews = blogPost =>{
             <div class="col-md-9">
               <div class="card-body">
                 <h5 class="card-title">${news.title}</h5>
-                <p class="card-text">${news.details}</p>
+                <p class="card-text">${(news.details).slice(1, 250,)}</p>
                 <div class="row">
                   <div class="col d-flex justify-content-between align-items-center">
-                    <img class="avater-img rounded-circle" src="./img/avatar.jpg" alt="">
+                    <img class="avater-img rounded-circle" src="${news.thumbnail_url}" alt="">
                     <div>
                       <h5 class="m-0">Jane Cooper</h5>
                       <p class="m-0">Jan 10, 2022</p>
                     </div>
                   </div>
-                  <div class="col">
-                    <h3 class="mt-2"><i class="fa-regular fa-eye"></i> 1.5M</h3>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <h3 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${news.rating.number}</span>M</h3>
                   </div>
-                  <div class="col">
-                    <div class="mt-2 fs-4">
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <div class=" fs-4">
                       <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -66,7 +68,7 @@ const displayNews = blogPost =>{
                     </div>
                   </div>
                   <div class="col d-flex justify-content-end align-items-center  ">
-                    <button class="btn btn-outline-primary d-block "><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+                    <button  class="btn btn-outline-primary d-block "><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
                   </div>
                 </div>
               </div>
@@ -79,3 +81,5 @@ const displayNews = blogPost =>{
         displayNews.appendChild(article);
     });
 };
+
+loadNews(1);

@@ -11,5 +11,12 @@ body{
 
 /* avter img */
 .avater-img{
-    width: 30px;
+    width: 35px;
+    height: 35px;
 }
+
+/* cursor */
+.cursor-pointer{
+    cursor: pointer;
+}
+
