@@ -1,0 +1,15 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.navbar-collapse {
+    
+    flex-grow: 0 !important;
+    
+}
+
+/* avter img */
+.avater-img{
+    width: 30px;
+}
