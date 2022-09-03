@@ -82,11 +82,11 @@ const displayNews = blogPost => {
                 <h5 class="card-title">${news.title}</h5>
                 <p class="card-text">${(news.details).slice(1, 250,)}<span>...</span></p>
                 <div class="row">
-                  <div class="col d-flex justify-content-between align-items-center">
+                  <div class="col d-flex justify-content-start align-items-center">
                     <img class="avater-img rounded-circle" src="${news.thumbnail_url}" alt="">
-                    <div>
+                    <div class="ms-3">
                       <h5 class="m-0 authore-name">${news.author.name != null ? news.author.name : 'No Data Found'}</h5>
-                      <p class="m-0">${news.author.published_date != null ? news.author.published_date : 'No Publish date ' }</p>
+                      <p class="m-0">${news.author.published_date != null ? news.author.published_date.slice(1, 10) : 'No Publish date ' }</p>
                     </div>
                   </div>
                   <div class="col d-flex justify-content-center align-items-center">
@@ -156,13 +156,13 @@ const displayModalNews = modal =>{
   const modalBodyNews = document.getElementById('modal-body-news');
   modalBodyNews.innerHTML =`
   <img class="img-fluid" src="${modal.image_url}" alt="">
-  <p>${(modal.details).slice(1, 150)}</p>
+  <p>${(modal.details).slice(1, 150)}<span>...</span></p>
 
-  <div class="col-5 d-flex justify-content-between align-items-center">
+  <div class="col-5 d-flex justify-content-start align-items-center">
      <img class="avater-img rounded-circle" src="${modal.thumbnail_url}" alt="">
-     <div>
+     <div class="ms-3">
       <h5 class="m-0 authore-name">${modal.author.name != null ? modal.author.name : 'No Data'}</h5>
-      <p class="m-0">${modal.author.published_date != null ? modal.author.published_date : 'No Publish date ' }</p>
+      <p class="m-0">${modal.author.published_date != null ? modal.author.published_date.slice(1, 10) : 'No Publish date ' }</p>
       </div>
   </div>
   <div class="col-3">
