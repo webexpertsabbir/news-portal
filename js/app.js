@@ -30,11 +30,11 @@ const loadNews = async (category_id) => {
 };
 
 const displayNews = blogPost => {
-    // console.log(blogPost);
+    console.log(blogPost);
  
     const showLenght = document.getElementById('show-length');
     showLenght.innerText = blogPost.length;
-    
+
     const displayNews = document.getElementById('dispaly-news');
     displayNews.textContent = '';
     blogPost.forEach(news => {
@@ -55,12 +55,12 @@ const displayNews = blogPost => {
                   <div class="col d-flex justify-content-between align-items-center">
                     <img class="avater-img rounded-circle" src="${news.thumbnail_url}" alt="">
                     <div>
-                      <h5 class="m-0">Jane Cooper</h5>
-                      <p class="m-0">Jan 10, 2022</p>
+                      <h5 class="m-0">${news.author.name != null ? news.author.name : 'No Name'}</h5>
+                      <p class="m-0">${news.author.published_date != null ? news.author.published_date : 'No Publish date ' }</p>
                     </div>
                   </div>
                   <div class="col d-flex justify-content-center align-items-center">
-                    <h3 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${news.rating.number}</span>M</h3>
+                    <h3 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${news.total_view != null ? news.total_view : 'No views'}</span></h3>
                   </div>
                   <div class="col d-flex justify-content-center align-items-center">
                     <div class=" fs-4">
@@ -73,7 +73,8 @@ const displayNews = blogPost => {
                   </div>
                 
                   <div class="col d-flex justify-content-end align-items-center">
-                  <button onclick="loadModalNewss('${news._id}')" class="btn btn-outline-primary d-block"><i class="fa-sharp fa-solid fa-arrow-right"></i> hello</button>
+
+                  <button onclick="loadModalNewss('${news._id}')" class="btn btn-outline-primary d-block" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
                   </div>
                 </div>
               </div>
@@ -94,7 +95,30 @@ const loadModalNewss = async(id) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data)
+    displayModalNews(data.data[0]);
+}
+
+const displayModalNews = modal =>{
+  console.log(modal);
+  const modalTitle = document.getElementById('modal-title');
+  modalTitle.innerText = `${modal.title}`;
+  const modalBodyNews = document.getElementById('modal-body-news');
+  modalBodyNews.innerHTML =`
+  <img class="img-fluid" src="${modal.image_url}" alt="">
+  <p>${(modal.details).slice(1, 150)}</p>
+  <div class="col">
+  <h5 class="">${modal.author.published_date}</h5>
+  </div>
+  <div class="col">
+  <h4 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${modal.total_view != null ? modal.total_view : 'No views'}</span></h4>
+
+  </div>
+  <div class="col">
+  <div class=" fs-4">
+      <h4 class="mt-2">${modal.rating.number} <i class="fa-solid fa-star"></i></h4>
+      </div>
+  </div>
+  `;
 }
 
 
