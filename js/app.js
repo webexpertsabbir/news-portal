@@ -1,3 +1,5 @@
+
+//load catagori
 const loadCatagori = async () => {
     const url = 'https://openapi.programming-hero.com/api/news/categories';
     const res = await fetch(url);
@@ -5,8 +7,10 @@ const loadCatagori = async () => {
     dispalyCatagori(data.data.news_category);
 }
 
+
+//display catagori
+
 const dispalyCatagori = catagoris => {
-  
     // console.log(catagoris)
     const catagorilist = document.getElementById('catagori-list');
     catagoris.forEach(catagori => {
@@ -15,12 +19,13 @@ const dispalyCatagori = catagoris => {
         li.classList.add('cursor-pointer', 'mx-3', 'd-inline');
         li.innerHTML = `<a onclick="loadNews(${catagori.category_id})">${catagori.category_name}</a>`;
         catagorilist.appendChild(li);
-
     })
 };
 
 loadCatagori();
 
+
+//load news
 const loadNews = async (category_id) => {
     // console.log(category_id);
     
@@ -32,12 +37,23 @@ const loadNews = async (category_id) => {
     
 };
 
+
+// displaye news arrow fanction
 const displayNews = blogPost => {
     toggolSpinner(true);
     // console.log(blogPost);
 
+    //catagori length
     const showLenght = document.getElementById('show-length');
-    showLenght.innerText = blogPost.length;
+    const length = blogPost.length;
+    // showLenght.innerText = blogPost.length;
+    if(length == 0){
+      showLenght.innerText = 'News Not Found';
+    }else{
+      showLenght.innerText = length
+    }
+    
+    //Dispaly news
     const displayNews = document.getElementById('dispaly-news');
     displayNews.textContent = '';
     blogPost.forEach(news => {
@@ -48,7 +64,7 @@ const displayNews = blogPost => {
         <div class="card mb-3 ">
           <div class="row g-0">
             <div class="col-md-3">
-              <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+              <img src="${news.image_url}" class="img-fluid rounded-start mt-3" alt="...">
             </div>
             <div class="col-md-9">
               <div class="card-body">
@@ -65,7 +81,7 @@ const displayNews = blogPost => {
                   <div class="col d-flex justify-content-center align-items-center">
                     <h5 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${news.total_view != null ? news.total_view : 'No views'}</span></h5>
                   </div>
-                  <div class="col d-flex justify-content-center align-items-center">
+                  <div class="col d-flex justify-content-center align-items-center d-none d-sm-block d-sm-none d-md-block">
                     <div class=" fs-5">
                       <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -95,6 +111,7 @@ const displayNews = blogPost => {
 loadNews(1);
 
 
+//spinner
 const toggolSpinner = isLoading => {
   const loaderSection = document.getElementById('loader');
   if(isLoading){
@@ -106,6 +123,8 @@ const toggolSpinner = isLoading => {
 }
 
 
+
+//load Modal news
 const loadModalNewss = async(id) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
     const res = await fetch(url);
@@ -113,6 +132,7 @@ const loadModalNewss = async(id) => {
     displayModalNews(data.data[0]);
 }
 
+// display modal
 const displayModalNews = modal =>{
   console.log(modal);
   const modalTitle = document.getElementById('modal-title');
