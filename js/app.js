@@ -6,12 +6,13 @@ const loadCatagori = async () => {
 }
 
 const dispalyCatagori = catagoris => {
+  
     // console.log(catagoris)
     const catagorilist = document.getElementById('catagori-list');
     catagoris.forEach(catagori => {
         // console.log(catagori);
         const li = document.createElement('li');
-        li.classList.add('cursor-pointer', 'mx-2');
+        li.classList.add('cursor-pointer', 'mx-3', 'd-inline');
         li.innerHTML = `<a onclick="loadNews(${catagori.category_id})">${catagori.category_name}</a>`;
         catagorilist.appendChild(li);
 
@@ -32,10 +33,8 @@ const loadNews = async (category_id) => {
 };
 
 const displayNews = blogPost => {
-
-  toggolSpinner(true);
-  
-    console.log(blogPost);
+    toggolSpinner(true);
+    // console.log(blogPost);
 
     const showLenght = document.getElementById('show-length');
     showLenght.innerText = blogPost.length;
@@ -59,15 +58,15 @@ const displayNews = blogPost => {
                   <div class="col d-flex justify-content-between align-items-center">
                     <img class="avater-img rounded-circle" src="${news.thumbnail_url}" alt="">
                     <div>
-                      <h5 class="m-0">${news.author.name != null ? news.author.name : 'No Name'}</h5>
+                      <h5 class="m-0 authore-name">${news.author.name != null ? news.author.name : 'No Data Found'}</h5>
                       <p class="m-0">${news.author.published_date != null ? news.author.published_date : 'No Publish date ' }</p>
                     </div>
                   </div>
                   <div class="col d-flex justify-content-center align-items-center">
-                    <h3 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${news.total_view != null ? news.total_view : 'No views'}</span></h3>
+                    <h5 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${news.total_view != null ? news.total_view : 'No views'}</span></h5>
                   </div>
                   <div class="col d-flex justify-content-center align-items-center">
-                    <div class=" fs-4">
+                    <div class=" fs-5">
                       <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -122,16 +121,21 @@ const displayModalNews = modal =>{
   modalBodyNews.innerHTML =`
   <img class="img-fluid" src="${modal.image_url}" alt="">
   <p>${(modal.details).slice(1, 150)}</p>
-  <div class="col">
-  <h5 class="">${modal.author.published_date}</h5>
+
+  <div class="col-5 d-flex justify-content-between align-items-center">
+     <img class="avater-img rounded-circle" src="${modal.thumbnail_url}" alt="">
+     <div>
+      <h5 class="m-0 authore-name">${modal.author.name != null ? modal.author.name : 'No Data'}</h5>
+      <p class="m-0">${modal.author.published_date != null ? modal.author.published_date : 'No Publish date ' }</p>
+      </div>
   </div>
-  <div class="col">
-  <h4 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${modal.total_view != null ? modal.total_view : 'No views'}</span></h4>
+  <div class="col-3">
+  <h5 class="mt-2"><i class="fa-regular fa-eye"></i> <span id="view">${modal.total_view != null ? modal.total_view : 'No views'}</span></h5>
 
   </div>
-  <div class="col">
+  <div class="col-4">
   <div class=" fs-4">
-      <h4 class="mt-2">${modal.rating.number} <i class="fa-solid fa-star"></i></h4>
+      <h5 class="mt-2">${modal.rating.number} <i class="fa-solid fa-star"></i></h5>
       </div>
   </div>
   `;
