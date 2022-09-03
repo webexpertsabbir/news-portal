@@ -2,9 +2,15 @@
 //load catagori
 const loadCatagori = async () => {
     const url = 'https://openapi.programming-hero.com/api/news/categories';
-    const res = await fetch(url);
-    const data = await res.json();
-    dispalyCatagori(data.data.news_category);
+    try{
+      const res = await fetch(url);
+      const data = await res.json();
+      dispalyCatagori(data.data.news_category);
+    }
+    catch(error){
+      console.log(error);
+    }
+
 }
 
 
@@ -31,9 +37,14 @@ const loadNews = async (category_id) => {
     
     const url = `https://openapi.programming-hero.com/api/news/category/0${category_id}`;
     // console.log(url)
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNews(data.data);
+    try{
+      const res = await fetch(url);
+      const data = await res.json();
+      displayNews(data.data);
+    }
+    catch(error){
+      console.log(error)
+    }
     
 };
 
@@ -69,7 +80,7 @@ const displayNews = blogPost => {
             <div class="col-md-9">
               <div class="card-body">
                 <h5 class="card-title">${news.title}</h5>
-                <p class="card-text">${(news.details).slice(1, 250,)}</p>
+                <p class="card-text">${(news.details).slice(1, 250,)}<span>...</span></p>
                 <div class="row">
                   <div class="col d-flex justify-content-between align-items-center">
                     <img class="avater-img rounded-circle" src="${news.thumbnail_url}" alt="">
@@ -127,9 +138,14 @@ const toggolSpinner = isLoading => {
 //load Modal news
 const loadModalNewss = async(id) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
-    const res = await fetch(url);
+    try{
+      const res = await fetch(url);
     const data = await res.json();
     displayModalNews(data.data[0]);
+    }
+    catch(error){
+      console.log(error);
+    }
 }
 
 // display modal
