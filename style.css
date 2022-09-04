@@ -37,6 +37,10 @@ p.m-0 {
   }
 
 
+  .menu-list li:hover {
+    color: #0d6efd;
+  }
+
 @media only screen and (max-width: 600px) {
     .d-inline{
         display: block !important;

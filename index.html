@@ -19,7 +19,7 @@
     <header class="container">
         <nav class="navbar navbar-expand-lg bg-light py-3 border-bottom border-2">
             <div class="container-fluid">
-              <a class="navbar-brand text-primary" href="#"><span class="bg-primary text-white py-1 px-2 rounded">News</span> Paper</a>
+              <a class="navbar-brand text-primary" href="index.html"><span class="bg-primary text-white py-1 px-2 rounded">News</span> Paper</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -27,10 +27,10 @@
                 <div>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                         <li class="nav-item">
-                          <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+                          <a class="nav-link active text-primary" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link mx-4" href="#">Blog</a>
+                          <a class="nav-link mx-4" href="answer.html">Blog</a>
                         </li>
                         <li class="nav-item">
                             <img class="avater-img rounded-circle" src="./img/avatar.jpg" alt=""> 
@@ -47,7 +47,8 @@
     <section class="container py-4">
       <div class="row">
         <div class="">
-          <ul id="catagori-list" class="list-unstyled ">
+          <ul id="catagori-list" class="list-unstyled menu-list">
+
           </ul>
         </div>
 
@@ -59,38 +60,36 @@
     </section>
     <!-- catagori section end -->
 
-    <!-- blog section start  -->
+    <!-- blog filter section start  -->
     <section class="container">
       <div class="row">
-        <div class="col-sm-6 ">
-          <label for=""> Sort By View: </label>
-          <select class="px-2" name="" id="">
-            <option  value="">Default</option>
-          </select>
-        </div>
-        <div class="col-sm-6 d-flex justify-content-end mt-sm-2">
+        <div class="d-flex justify-content-between">
+          <div>
+            <label for=""> Sort By View: </label>
+            <select class="px-2" name="" id="">
+              <option  value="">Default</option>
+            </select>
+          </div>
           <div>
             <button class="btn btn-primary ">Today’s Pick </button>
-          <button class="btn btn-outline-primary">Trending </button>
+              <button class="btn btn-outline-primary">Trending </button>
           </div>
         </div>
       </div>
-
-      <!-- blog -->
-      
-  
     </section>
 
-    <!-- blog section end  -->
+    <!-- blog filter section end  -->
 
-
+    <!-- blog section start  -->
     <section class="container">
       <div id="dispaly-news">
         
 
       </div>
     </section>
+    <!-- blog section start  -->
 
+    <!-- modal section start  -->
     <section>
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,9 +111,9 @@
         </div>
       </div>
     </section>
+    <!-- modal section start  -->
 
-    <!-- loder -->
-
+    <!-- loder start -->
     <section>
       <div id="loader" class="d-flex justify-content-center align-items-center d-none" style="height: 100px;">
           <div class="spinner-border" role="status">
@@ -122,6 +121,13 @@
           </div>
         </div>
   </section>
+  <!-- loder end -->
+  <!-- footer start  -->
+  <footer class="container">
+    <p class="text-center py-4">© All Right Reserved by News Paper – Privacy Policy | Terms and Conditions</p>
+  </footer>
+  <!-- footer end  -->
+
     <!-- script  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 

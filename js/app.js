@@ -15,7 +15,6 @@ const loadCatagori = async () => {
 
 
 //display catagori
-
 const dispalyCatagori = catagoris => {
     // console.log(catagoris)
     const catagorilist = document.getElementById('catagori-list');
@@ -30,11 +29,9 @@ const dispalyCatagori = catagoris => {
 
 loadCatagori();
 
-
 //load news
 const loadNews = async (category_id) => {
     // console.log(category_id);
-    
     const url = `https://openapi.programming-hero.com/api/news/category/0${category_id}`;
     // console.log(url)
     try{
@@ -45,14 +42,23 @@ const loadNews = async (category_id) => {
     catch(error){
       console.log(error)
     }
-    
 };
-
 
 // displaye news arrow fanction
 const displayNews = blogPost => {
     toggolSpinner(true);
-    // console.log(blogPost);
+    console.log(blogPost);
+
+
+
+    // if(blogPost == true){
+    //   blogPost.
+    // }
+    
+    // news sort
+    blogPost.sort((a, b) => {
+      return b.total_view - a.total_view;
+    })
 
     //catagori length
     const showLenght = document.getElementById('show-length');
@@ -64,10 +70,14 @@ const displayNews = blogPost => {
       showLenght.innerText = length
     }
     
+
+
     //Dispaly news
     const displayNews = document.getElementById('dispaly-news');
     displayNews.textContent = '';
     blogPost.forEach(news => {
+      // const shortView = news.total_view;
+      // console.log(shortView);
         // console.log(news);
         const article = document.createElement('article');
         article.innerHTML = `
