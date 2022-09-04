@@ -47,14 +47,8 @@ const loadNews = async (category_id) => {
 // displaye news arrow fanction
 const displayNews = blogPost => {
     toggolSpinner(true);
-    console.log(blogPost);
+    // console.log(blogPost);
 
-
-
-    // if(blogPost == true){
-    //   blogPost.
-    // }
-    
     // news sort
     blogPost.sort((a, b) => {
       return b.total_view - a.total_view;
@@ -160,7 +154,7 @@ const loadModalNewss = async(id) => {
 
 // display modal
 const displayModalNews = modal =>{
-  console.log(modal);
+  // console.log(modal);
   const modalTitle = document.getElementById('modal-title');
   modalTitle.innerText = `${modal.title}`;
   const modalBodyNews = document.getElementById('modal-body-news');
